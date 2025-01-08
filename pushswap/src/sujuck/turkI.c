@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turkI.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdoumane <mdoumane@student.42luxembourg    +#+  +:+       +#+        */
+/*   By: mdoumane <mdoumane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 03:19:58 by mdoumane          #+#    #+#             */
-/*   Updated: 2024/12/06 21:38:50 by mdoumane         ###   ########.fr       */
+/*   Updated: 2024/12/08 17:01:35 by mdoumane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ int	compar_clock(int *crush, t_dlist *a, t_dlist *b, int love)
 	while (a)
 	{
 		*crush = find_crush(a->data, b, small(b), big(b));
-		current = count_tic_tac(lstsize(a), lstsize(b), index, *crush);
+		current = count_tic_tac((lstsize(a) + index), lstsize(b), index,
+				*crush);
 		if (current < chp)
 		{
 			chp = current;
@@ -105,7 +106,7 @@ int	compar_clock(int *crush, t_dlist *a, t_dlist *b, int love)
 		}
 		a = a->next;
 		index++;
-		if (index >= lstsize(a))
+		if (index >= (lstsize(a) + index))
 			break ;
 	}
 	*crush = love;
@@ -122,7 +123,6 @@ void	perfect_clock(t_dlist **a, t_dlist **b, int chp, int lv)
 	while (sza > 3)
 	{
 		chp = compar_clock(&crush, *a, *b, lv);
-		printf("%d", chp);
 		make_tic_tac(chp, crush, a, b);
 		pb(a, b, 1);
 		sza--;

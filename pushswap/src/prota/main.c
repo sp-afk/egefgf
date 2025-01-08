@@ -6,7 +6,7 @@
 /*   By: mdoumane <mdoumane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 01:20:26 by mdoumane          #+#    #+#             */
-/*   Updated: 2024/12/05 02:15:42 by mdoumane         ###   ########.fr       */
+/*   Updated: 2024/12/08 16:17:29 by mdoumane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	shoescharactere(t_dlist *a, t_dlist *b, int z)
 		algotr(&a);
 	else if (z > 3 && z < 10)
 		algo(&a, &b);
-	else if (z >= 10)
+	else
 		algoturk(&a, &b);
 	lst_clear(&a);
 }
@@ -74,22 +74,22 @@ void	pushswap(char **str, int f)
 	shoescharactere(stack, stbck, f);
 }
 
-int	main(int av, char **ac)
+int	main(int ac, char **av)
 {
 	int	sr;
 	int	z;
 
 	sr = 0;
-	z = av - 1;
-	if (av)
+	z = ac - 1;
+	if (ac)
 	{
-		sr = cheker(ac);
-		if (sr != 0 || av <= 1)
+		sr = cheker(av);
+		if (sr != 0 || ac <= 1)
 			printf("Error\n");
-		//else if (str_cmp(ac[0], "./push_swap") == 0)
-			pushswap(ac, z);
-		//else if (str_cmp(ac[0], "./checker") == 0)
-			//tester(ac, z);
+		else if (str_cmp(av[0], "./checker") == 0)
+			tester(av, z);
+		else
+			pushswap(av, z);
 		return (0);
 	}
 }
