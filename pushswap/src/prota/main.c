@@ -84,7 +84,7 @@ int	main(int ac, char **av)
 	if (ac)
 	{
 		sr = cheker(av);
-		if (sr != 0 || ac <= 1)
+		if (sr != 0 /*|| ac <= 1*/)
 			printf("Error\n");
 		else if (str_cmp(av[0], "./checker") == 0)
 			tester(av, z);
