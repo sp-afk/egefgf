@@ -3,22 +3,39 @@
 
 # include "../minilibx-linux/mlx.h"
 
-# define X 1920
+# define X 1620
 # define Y 1080
 # define MAX_IT  256
 # define MAX_BIG 2
-
+# define HB 2.0
+# define GD 3.0
+# define JY (HB / Y)
+# define JX (GD / X)
 
 typedef struct	s_z
 {
-	long long n;
-	long long i;
+	double n;
+	double i;
 }				z;
+
+typedef struct	s_data
+{
+	void *mlx;
+	void *win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 
 z	sqrmgk(z k);
 z adimgk (z a, z b);
 void printz (z k);
-void mandelbroot(void *mlx, void *mlx_win);
+void mandelbroot(t_data *data);
+void putcentpix(t_data *data, int x, int y, int color);
+
 
 
 

@@ -25,14 +25,17 @@ void printz (z k)
 
 int main(void)
 {
-    void *mlx;
-    void *mlx_win;
+	t_data data;
 
-    mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, X, Y, "Hello world!");
-    (void)mlx_win;
-    mandelbroot(mlx, mlx_win);
-    mlx_loop(mlx);
+    data.mlx = mlx_init();
+    data.win = mlx_new_window(data.mlx, X, Y, "Hello world!");
+	data.img = mlx_new_image(data.mlx, X, Y);
+	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
+
+    mandelbroot(&data);
+	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
+	//putcentpix(0, 0, mlx, mlx_win, 0xFFFFFF);
+    mlx_loop(data.mlx);
     return 0; // Ajoutez un retour explicite pour éviter d'autres avertissements potentiels.
 }
 
