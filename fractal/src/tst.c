@@ -31,5 +31,5 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void putcentpix(t_data *data, int x, int y, int color)
 {
-	my_mlx_pixel_put(data, (((X / 3)*2) + x), ((Y/2) + y), color);
+	my_mlx_pixel_put(data, (((X / 3)*2) + x), ((Y/2) + (-1 * y)), color);
 }

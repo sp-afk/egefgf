@@ -3,8 +3,8 @@
 
 # include "../minilibx-linux/mlx.h"
 
-# define X 1620
-# define Y 1080
+# define X 800//1620
+# define Y 800//1080
 # define MAX_IT  256
 # define MAX_BIG 2
 # define HB 2.0

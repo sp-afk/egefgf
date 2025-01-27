@@ -7,13 +7,15 @@ void printz (z k)
 }
 
 
-int sqr(int a)
+double sqr(double a)
 {
-	int c;
+	double c;
 
 	c = a * a;
 	return c;
 }
+
+
 
 z	sqrmgk(z k)
 {
@@ -41,7 +43,7 @@ int	gamberge (z c)
 	z.n = 0;
 	z.i = 0;
 
-	while (i != MAX_IT /*&& (z.n < MAX_BIG && z.i < MAX_BIG)*/ && (sqr(z.n) + sqr(z.i) < 4.0))
+	while (i != MAX_IT /*&& (z.n < MAX_BIG && z.i < MAX_BIG)*/ && ((sqr(z.n) + sqr(z.i)) < 4.0))
 	{
 		z = adimgk(sqrmgk(z), c);
 		i++;
@@ -59,25 +61,28 @@ int	gamberge (z c)
 void mandelbroot(t_data *data)
 {
 	z c;
-	int px = ((X / 3)*2) * -1;
-	int py = (Y / 2) *-1;
+	//int px = ((X / 3)*2) * -1;
+	int px = (X / 2) * -1;
+	int py = (Y / 2) ;//*-1;
 
 	c.n = -2.0;
-	c.i = -1.0;
+	c.i = 1.0;
 
-	while (px != X / 3 && py != Y/2)
+	while (px != (X / 2) + 1 && py != (((Y/2) * -1) +1 ))
 	{
+		//printf("Pixel -> x : %d && y : %d\nImagi -> Re : %f && Im : %f\n\n", px, py, c.n, c.i);
 		if (gamberge(c) == 1)
 			putcentpix(data ,px, py,0xFFFFFF);
 		c.n += JX;
 		px++;
 		//printf("%d\n%d\n\n", px, X/3);
-		if (px == X / 3)
+		if (px == (X / 2) + 1)
 		{
-			c.i += JY;
-			py++;
+			c.i -= JY;
+			py--;
 			c.n = -2;
-			px = ((X / 3)*2) * -1;
+			//px = ((X / 3)*2) * -1;
+			px = (X / 2) * -1;
 		}
 			//c.i++;
 		//printz (c);
