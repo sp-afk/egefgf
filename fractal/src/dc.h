@@ -3,9 +3,9 @@
 
 # include "../minilibx-linux/mlx.h"
 
-# define X 800//1620
-# define Y 800//1080
-# define MAX_IT  256
+# define X 1000
+# define Y 800
+# define MAX_IT  255
 # define MAX_BIG 2
 # define HB 2.0
 # define GD 3.0
@@ -35,6 +35,8 @@ z adimgk (z a, z b);
 void printz (z k);
 void mandelbroot(t_data *data);
 void putcentpix(t_data *data, int x, int y, int color);
+void julia(t_data *data ,z c);
+z	crtcmplx(double k , double c);
 
 
 
